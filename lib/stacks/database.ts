@@ -18,7 +18,7 @@ import {
   BaseStack,
   BaseStackProps,
 } from './base';
-import { LAMBDA_SOURCE_CODE_DIR } from '../constants/app-constants';
+import { LAMBDA_BASE_PATH } from '../constants/app-constants';
 
 const TABLE_NAME = 'TransactionTable';
 
@@ -50,7 +50,7 @@ export class DatabaseStack extends BaseStack {
     const triggerFunctionName = 'PopulateDatabaseFunction';
 
     const populateDatabaseFunction = new TriggerFunction(this, triggerFunctionName, {
-      code: Code.fromAsset(resolve(__dirname, LAMBDA_SOURCE_CODE_DIR, 'trigger')),
+      code: Code.fromAsset(resolve(__dirname, LAMBDA_BASE_PATH, 'trigger')),
       environment: {
         ITEM_TABLE: TABLE_NAME,
         MOCK_DATA_FILE: 'MOCK_DATA.json',

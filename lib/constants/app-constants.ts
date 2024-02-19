@@ -1,1 +1,1 @@
-export const LAMBDA_SOURCE_CODE_DIR = '../../lambda';
+export const LAMBDA_BASE_PATH = '../../lambda';

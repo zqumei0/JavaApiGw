@@ -1,0 +1,1 @@
+export const LAMBDA_SOURCE_CODE_DIR = '../../lambda';

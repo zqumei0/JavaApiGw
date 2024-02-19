@@ -6,11 +6,21 @@ import {
   AttributeType,
   TableV2,
 } from 'aws-cdk-lib/aws-dynamodb';
+import {
+  Code,
+  Runtime,
+} from 'aws-cdk-lib/aws-lambda';
+import { TriggerFunction } from 'aws-cdk-lib/triggers';
+
+import { resolve } from 'path';
 
 import {
   BaseStack,
   BaseStackProps,
 } from './base';
+import { LAMBDA_SOURCE_CODE_DIR } from '../constants/app-constants';
+
+const TABLE_NAME = 'TransactionTable';
 
 export interface DatabaseStackProps extends BaseStackProps {}
 
@@ -23,15 +33,31 @@ export class DatabaseStack extends BaseStack {
     super(scope, id, props);
     this.props = props;
 
-    this.createTransactionTable();
+    this.table = this.createTransactionTable();
+    this.populateDatabase();
   }
 
   private createTransactionTable(): TableV2 {
     const partitionKey = { name: 'pk', type: AttributeType.STRING };
-    return new TableV2(this, 'TransactionTable', {
+    return new TableV2(this, TABLE_NAME, {
       partitionKey,
       removalPolicy: RemovalPolicy.DESTROY,
-      tableName: 'TransactionTable',
+      tableName: TABLE_NAME,
     });
+  }
+
+  private populateDatabase(): void {
+    const triggerFunctionName = 'PopulateDatabaseFunction';
+
+    const populateDatabaseFunction = new TriggerFunction(this, triggerFunctionName, {
+      code: Code.fromAsset(resolve(__dirname, LAMBDA_SOURCE_CODE_DIR, 'trigger')),
+      environment: {
+        ITEM_TABLE: TABLE_NAME,
+        MOCK_DATA_FILE: 'MOCK_DATA.json',
+      },
+      handler: 'load_database.handler',
+      runtime: Runtime.PYTHON_3_11,
+    });
+    this.table.grantWriteData(populateDatabaseFunction);
   }
 }

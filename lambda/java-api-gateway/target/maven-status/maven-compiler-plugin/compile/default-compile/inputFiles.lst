@@ -1,0 +1,7 @@
+/Users/envy/Documents/github/JavaApiGateway/lambda/java-api-gateway/src/main/java/com/example/javaapigw/utils/HandlerUtils.java
+/Users/envy/Documents/github/JavaApiGateway/lambda/java-api-gateway/src/main/java/com/example/javaapigw/handlers/BaseHandler.java
+/Users/envy/Documents/github/JavaApiGateway/lambda/java-api-gateway/src/main/java/com/example/javaapigw/service/ItemService.java
+/Users/envy/Documents/github/JavaApiGateway/lambda/java-api-gateway/src/main/java/com/example/javaapigw/models/Item.java
+/Users/envy/Documents/github/JavaApiGateway/lambda/java-api-gateway/src/main/java/com/example/javaapigw/adapters/Database.java
+/Users/envy/Documents/github/JavaApiGateway/lambda/java-api-gateway/src/main/java/com/example/javaapigw/App.java
+/Users/envy/Documents/github/JavaApiGateway/lambda/java-api-gateway/src/main/java/com/example/javaapigw/handlers/ItemHandler.java

@@ -1,0 +1,10 @@
+com/example/javaapigw/models/Item$ItemBuilder.class
+com/example/javaapigw/utils/HandlerUtils.class
+com/example/javaapigw/adapters/Database.class
+com/example/javaapigw/handlers/BaseHandler.class
+com/example/javaapigw/models/Item.class
+com/example/javaapigw/utils/HandlerUtils$HttpMethods.class
+com/example/javaapigw/App.class
+com/example/javaapigw/handlers/ItemHandler$1.class
+com/example/javaapigw/service/ItemService.class
+com/example/javaapigw/handlers/ItemHandler.class
